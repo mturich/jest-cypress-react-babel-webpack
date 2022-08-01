@@ -7,7 +7,7 @@ and back to C if the entry is deleted`, () => {
   const {getByText} = render(<Calculator />)
   const clearButton = getByText('AC')
 
-  fireEvent.click(screen.getByText(/3/))
+  fireEvent.click(getByText(/3/))
   expect(clearButton).toHaveTextContent('C')
 
   fireEvent.click(getByText('C'))
