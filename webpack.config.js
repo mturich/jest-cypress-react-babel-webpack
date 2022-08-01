@@ -6,6 +6,7 @@ module.exports = {
     path: path.resolve('dist'),
     filename: 'bundle.js',
   },
+  // shared modules can be imported as modules
   resolve: {
     modules: ['node_modules', path.join(__dirname, 'src'), 'shared'],
   },

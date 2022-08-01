@@ -1,29 +1,17 @@
+const path = require('path')
+
 module.exports = {
-  ...require('./test/jest-common'),
-  collectCoverageFrom: [
-    '**/src/**/*.js',
-    '!**/__tests__/**',
-    '!**/__server_tests__/**',
-    '!**/node_modules/**',
-  ],
-  coverageThreshold: {
-    global: {
-      statements: 15,
-      branches: 10,
-      functions: 15,
-      lines: 15,
-    },
-    './src/shared/utils.js': {
-      statements: 100,
-      branches: 80,
-      functions: 100,
-      lines: 100,
-    },
+  //modulePaths: [path.join(__dirname, 'src')],
+  testEnvironment: 'jest-environment-jsdom',
+  moduleNameMapper: {
+    // makes all module.css usable
+    '\\.module\\.css$': 'identity-obj-proxy',
+    //ignores ccs with the mock
+    '\\.css$': require.resolve('./test/style-mock.js'),
   },
-  projects: [
-    './test/jest.lint.js',
-    './test/jest.client.js',
-    './test/jest.server.js',
-    './server',
-  ],
+  //moduleDirectories: ['node_modules', 'shared'],
+  // only necessary if shared files are imported as modules (webpack config)
+  moduleDirectories: ['node_modules', path.join(__dirname, 'src'), 'shared'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  snapshotSerializers: ['jest-emotion'],
 }

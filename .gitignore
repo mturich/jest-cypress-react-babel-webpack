@@ -1,6 +1,9 @@
 dist
 node_modules
+<<<<<<< HEAD
 coverage
 cypress/videos
 cypress/screenshots
 .eslintcache
+=======
+>>>>>>> exs-jest

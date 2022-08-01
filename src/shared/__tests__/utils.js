@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import {getFormattedValue} from '../utils'
 
 test('formats the value', () => {

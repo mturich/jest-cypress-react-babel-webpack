@@ -1,11 +1,19 @@
-import * as React from 'react'
-import {render} from 'calculator-test-utils'
+/**
+ * @jest-environment jsdom
+ */
+
+import React from 'react'
+import {render} from '@testing-library/react'
 import CalculatorDisplay from '../calculator-display'
 
 test('renders', () => {
   const {container} = render(<CalculatorDisplay value="0" />)
+
+  // needs prettier
+  //without prettier, toMatchSnapshot works
   expect(container.firstChild).toMatchInlineSnapshot(`
     .emotion-0 {
+      position: relative;
       color: white;
       background: #1c191c;
       line-height: 130px;
@@ -13,11 +21,13 @@ test('renders', () => {
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      position: relative;
+
     }
 
     <div
-      class="emotion-0 emotion-1"
+      class="emotion-0"
+      id="calculator"
+
     >
       <div
         class="autoScalingText"
