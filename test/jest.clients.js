@@ -1,5 +1,5 @@
 module.exports = {
-  ...require('./jest-common'),
+  ...require('./jest.server'),
   testEnvironment: 'jest-environment-jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
   snapshotSerializers: ['jest-emotion'],
@@ -17,4 +17,5 @@ module.exports = {
       lines: 100,
     },
   },
+  testMatch: ['**/__tests__/**/*.js'],
 }
