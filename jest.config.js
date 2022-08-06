@@ -50,10 +50,16 @@ module.exports = {
     {
       ...constConfig,
       runner: 'jest-runner-eslint',
-      watchPlugins: ['jest-runner-eslint/watch-fix'],
       displayName: 'lint',
-      testMatch: ['<rootDir>/**/*.js']
+      testMatch: ['<rootDir>/**/*.js'],
     },
   ],
   testPathIgnorePatterns: ['/node-modules/'],
+  // has to be at the end of the document
+  watchPlugins: [
+    'jest-watch-select-projects',
+    'jest-runner-eslint/watch-fix',
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 }
