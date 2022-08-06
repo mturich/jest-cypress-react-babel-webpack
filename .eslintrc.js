@@ -7,11 +7,21 @@ module.exports = {
     'kentcdodds/jest',
     'kentcdodds/react',
   ],
+
   rules: {
     // https://github.com/benmosher/eslint-plugin-import/issues/1446
-    'import/named': 'off',
+    'import/named': 0,
   },
-  settings: {'import/resolver': 'node'},
+  settings: {
+    'import/resolver': {
+      node: {
+        // it is important to include './test'
+        // to run all the file with modules import
+        paths: ['./src', './test'],
+        extensions: ['.js', '.ts', '.d.ts', '.tsx'],
+      },
+    },
+  },
   overrides: [
     {
       files: ['**/src/**'],

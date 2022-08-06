@@ -1,12 +1,13 @@
 const path = require('path')
 
 const constConfig = {
-  //rootDir: path.join(__dirname, '..'),
   moduleDirectories: [
     'node_modules',
-    path.join(__dirname, 'src'),
+    'src',
+    //path.join(__dirname, 'src'),
     'shared',
-    path.join(__dirname, 'test'),
+    'test',
+    //path.join(__dirname, 'test'),
   ],
   moduleNameMapper: {
     '\\.module\\.css$': 'identity-obj-proxy',
@@ -45,6 +46,13 @@ module.exports = {
       coverageDirectory: path.join(__dirname, '../coverage/server'),
       testEnvironment: 'jest-environment-node',
       testMatch: ['**/__server_tests__/**/*.js'],
+    },
+    {
+      ...constConfig,
+      runner: 'jest-runner-eslint',
+      watchPlugins: ['jest-runner-eslint/watch-fix'],
+      displayName: 'lint',
+      testMatch: ['<rootDir>/**/*.js'],
     },
   ],
   testPathIgnorePatterns: ['/node-modules/'],
