@@ -1,8 +1,8 @@
 
 import React from 'react'
 import {render} from 'calculator-test-utils'
+import { light} from 'themes'
 import AutoScalingText from '../auto-scaling-text'
-import {dark, light} from 'themes'
 
 test('renders', () => {
   render(<AutoScalingText />, {theme: light})

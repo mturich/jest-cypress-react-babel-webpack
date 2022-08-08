@@ -1,12 +1,13 @@
 const path = require('path')
 
 const constConfig = {
-  //rootDir: path.join(__dirname, '..'),
   moduleDirectories: [
     'node_modules',
-    path.join(__dirname, 'src'),
+    'src',
+    //path.join(__dirname, 'src'),
     'shared',
-    path.join(__dirname, 'test'),
+    'test',
+    //path.join(__dirname, 'test'),
   ],
   moduleNameMapper: {
     '\\.module\\.css$': 'identity-obj-proxy',
@@ -18,7 +19,7 @@ module.exports = {
   collectCoverageFrom: ['**/src/**/*.js'],
   coverageThreshold: {
     global: {
-      statements: 31,
+      statements: 30,
       branches: 20,
       functions: 28,
       lines: 29,
@@ -46,6 +47,19 @@ module.exports = {
       testEnvironment: 'jest-environment-node',
       testMatch: ['**/__server_tests__/**/*.js'],
     },
+    {
+      ...constConfig,
+      runner: 'jest-runner-eslint',
+      displayName: 'lint',
+      testMatch: ['<rootDir>/**/*.js'],
+    },
   ],
   testPathIgnorePatterns: ['/node-modules/'],
+  // has to be at the end of the document
+  watchPlugins: [
+    'jest-watch-select-projects',
+    'jest-runner-eslint/watch-fix',
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 }

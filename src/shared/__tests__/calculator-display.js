@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { render } from 'calculator-test-utils'
-import { light, dark } from 'themes'
+//import { light, dark } from 'themes'
 import CalculatorDisplay from '../calculator-display'
 
 
