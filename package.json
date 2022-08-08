@@ -19,7 +19,8 @@
   },
   "jest-runner-eslint": {
     "cliOptions": {
-      "ignorePath": "./.gitignore"
+      "ignorePath": "./.gitignore",
+      "ignorePattern": "**/cypress/**"
     }
   },
   "husky": {
