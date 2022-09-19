@@ -3,10 +3,9 @@
  */
 
 import React from 'react'
-import { render } from 'calculator-test-utils'
+import {render} from 'calculator-test-utils'
 //import { light, dark } from 'themes'
 import CalculatorDisplay from '../calculator-display'
-
 
 test('renders', () => {
   const {container} = render(<CalculatorDisplay value="0" />)
@@ -14,14 +13,14 @@ test('renders', () => {
   //rerender(<CalculatorDisplay value="0" />,{ wrapper:Wrapper})
   expect(container.firstChild).toMatchInlineSnapshot(`
     .emotion-0 {
+      color: white;
+      background: #1c191c;
       position: relative;
       line-height: 130px;
       font-size: 6em;
       -webkit-flex: 1;
       -ms-flex: 1;
       flex: 1;
-      color: white;
-      background: #1c191c;
     }
 
     <div
