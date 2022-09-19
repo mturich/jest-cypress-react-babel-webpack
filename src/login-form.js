@@ -37,7 +37,7 @@ function LoginForm({onSuccess, endpoint}) {
   return (
     <form
       onSubmit={handleSubmit}
-      css={{
+      style={{
         fontSize: 20,
         width: 300,
         display: 'flex',
@@ -49,15 +49,15 @@ function LoginForm({onSuccess, endpoint}) {
       <div>
         <label htmlFor="username-input">Username</label>
         <input
-          css={{marginLeft: 10, fontSize: 20}}
+          style={{marginLeft: 10, fontSize: 20}}
           id="username-input"
           name="username"
         />
       </div>
-      <div css={{marginTop: 20, marginBottom: 20}}>
+      <div style={{marginTop: 20, marginBottom: 20}}>
         <label htmlFor="password-input">Password</label>
         <input
-          css={{marginLeft: 10, fontSize: 20}}
+          style={{marginLeft: 10, fontSize: 20}}
           id="password-input"
           name="password"
           type="password"
@@ -66,7 +66,7 @@ function LoginForm({onSuccess, endpoint}) {
 
       <button
         type="submit"
-        css={{
+        style={{
           fontSize: 18,
           alignSelf: 'flex-end',
           backgroundColor: 'rgba(0,0,0,0.15)',

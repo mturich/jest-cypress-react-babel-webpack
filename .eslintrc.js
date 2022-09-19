@@ -11,7 +11,7 @@ module.exports = {
   rules: {
     // https://github.com/benmosher/eslint-plugin-import/issues/1446
     'import/named': 0,
-    // saved me from an css error 
+    // saved me from an css error but finally css prop has to be style in jsx
     //'react/no-unknown-property': ['error', {ignore: ['css']}],
   },
   settings: {
