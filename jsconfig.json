@@ -12,5 +12,5 @@
   "include": [
     "src",
     "test/*"
-  ],
+, "cypress/e2e/register.js"  ],
 }
