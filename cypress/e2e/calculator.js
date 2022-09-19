@@ -1,21 +1,15 @@
-describe('anonymous calculator', () => {
-  it('can make calculations', () => {
+describe('anonimous calculator', () => {
+  it('can make calculation', () => {
     cy.visit('/')
-    cy.findByText(/^1$/).click()
-    cy.findByText(/^\+$/).click()
-    cy.findByText(/^2$/).click()
-    cy.findByText(/^=$/).click()
-    cy.findByTestId('total').should('have.text', '3')
-  })
-})
-
-describe('authenticated calculator', () => {
-  it('displays the username', () => {
-    cy.loginAsNewUser().then(user => {
-      cy.visit('/')
-      cy.findByTestId('username-display').should('have.text', user.username)
-      cy.findByText(/logout/i).click()
-      cy.findByTestId('username-display', {timeout: 300}).should('not.exist')
-    })
+      .get('._2S_Gj6clvtEi-dZqCLelKb > :nth-child(3)')
+      .click()
+      .get('._1yUJ9HTWYf2v-MMhAEVCAn > :nth-child(4)')
+      .click()
+      .get('._2S_Gj6clvtEi-dZqCLelKb > :nth-child(4)')
+      .click()
+      .get('._1yUJ9HTWYf2v-MMhAEVCAn > :nth-child(5)')
+      .click()
+      .get('.css-gl2nh0-calculator-display--DisplayContainer')
+      .should('have.text', '3')
   })
 })
