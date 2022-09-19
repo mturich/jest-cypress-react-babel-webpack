@@ -8,13 +8,19 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "pretest:e2e:run": "npm run build",
+    "test:e2e": "is-ci-cli \"test:e2e:run\" \"test:e2e:dev\" ",
+    "test:e2e:run": "start-server-and-test start http://localhost:8080 cy:run",
+    "test:e2e:dev": "start-server-and-test dev http://localhost:8080 cy:open",
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production",
     "postbuild": "cp ./public/index.html ./dist/index.html",
     "start": "serve --no-clipboard --single --listen 8080 dist",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css|html|md)\"",
     "lint": "eslint --ignore-path .gitignore .",
-    "validate": "npm run lint && npm run test && npm run build",
+    "validate": "npm run test:coverage && npm run test:e2e:run",
     "setup": "npm install && npm run validate"
   },
   "jest-runner-eslint": {
@@ -25,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && npm run build"
+      "pre-commit": "lint-staged && npm run test:e2e:run"
     }
   },
   "lint-staged": {
@@ -45,12 +51,13 @@
     "@babel/preset-react": "^7.7.4",
     "@babel/runtime": "^7.7.4",
     "@emotion/babel-preset-css-prop": "^10.0.23",
+    "@testing-library/cypress": "^5.0.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "cypress": "^3.6.1",
-    "eslint": "^6.7.1",
+    "eslint": "7.2.0",
     "eslint-config-cypress": "^0.28.0",
     "eslint-config-kentcdodds": "^14.6.1",
     "eslint-import-resolver-jest": "^3.0.0",
@@ -63,13 +70,14 @@
     "is-ci-cli": "^2.0.0",
     "jest": "^24.9.0",
     "jest-emotion": "^10.0.17",
-    "jest-runner-eslint": "^0.7.5",
+    "jest-runner-eslint": "1.0",
     "jest-watch-select-projects": "^1.0.0",
     "jest-watch-typeahead": "^0.6.5",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
     "serve": "^11.2.0",
+    "start-server-and-test": "1.10.6",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
@@ -78,6 +86,8 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
     "emotion-theming": "^10.0.19",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
