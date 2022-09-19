@@ -39,7 +39,7 @@ function App({user, logout}) {
         </div>
 
         <div
-        css={{
+        style={{
           display: 'flex',
           marginTop: 10,
           marginBottom: 10,

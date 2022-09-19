@@ -11,7 +11,8 @@ module.exports = {
   rules: {
     // https://github.com/benmosher/eslint-plugin-import/issues/1446
     'import/named': 0,
-    'react/no-unknown-property': ['error', {ignore: ['css']}],
+    // saved me from an css error 
+    //'react/no-unknown-property': ['error', {ignore: ['css']}],
   },
   settings: {
     'import/resolver': {
